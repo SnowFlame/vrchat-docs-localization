@@ -1,92 +1,99 @@
 ---
-title: "Impostors"
+title: "模型替身"
 upstreamCommit: 0c7d3e90118ae4bf4414b328132ce07106d74ba4
 ---
 
-# Impostors
-## What are Impostors
-An impostor is your avatar's body double. It's what others will see when your avatar can't load for whatever reason, like if your avatar was uploaded for PC only but your friend is using a Quest. Typically, you'd show as a fallback avatar or robot, but creating an impostor will let you keep your unique style.
+# 模型替身
+## 什么是模型替身
+模型替身是你模型的替身。 他将在别的玩家因为某些原因看不到你的原模型时出现。譬如你的模型是PC端的但是你的朋友正在使用Quest端时。一般来说, 你的朋友会看到你的备用模型或者机器人模型,创建模型替身将使你保持你原来的外观。
 
-## Creating an Impostor
-You can only generate impostors for avatars you [own and have uploaded](/creators.vrchat.com/avatars/creating-your-first-avatar), and impostors currently only support humanoid avatars.
+## 创建模型替身
+你只能为你[拥有或者是已上传](/creators.vrchat.com/avatars/creating-your-first-avatar)的模型创建模型替身,模型替身目前只支持人形模型。
 
-To create your first impostor:
+创建你的第一个模型替身:
 
-1. Log in to the VRChat website.
+1. 登录vrchat网页。
 
-2. Navigate to "Avatars", then "My Avatars", then the name and icon of the avatar you'd like to make an impostor of.
+2. 转到"Avatars", 然后点击"My Avatars", 然后点击你想要创建模型替身的模型的名称或图标。
 
-3. Click "Generate Impostors", or, if the avatar already has an impostor that you'd like to be updated, "Regenerate Impostors".
+3. 点击"Generate Impostors"/"Regenerate Impostors"(当这个模型已经有替身但是你打算更新时)
+4. 稍等片刻
 
-4. Wait.
-
-5. Refresh the page, after some time you should now see that your avatar has impostors for Quest and PC.
+5. 刷新页面, 过一段时间之后你就能看到你的模型成功创建了适配PC/Quest平台的替身。
 
 ![image](/creators.vrchat.com/images/avatars/impostors/generation.png)
 
- You can toggle impostors on and off. When off, your fallback avatar will be shown instead.
+ 你可以打开或者关闭模型替身. 关闭时，将展示你的备用模型.
 
 
-## Previewing an Impostor
-Once you've got your impostor generated, you're probably going to be pretty excited to see how it looks!
+## 预览模型替身
+创建了模型替身后, 你可能会迫不及待的想要看到它长啥样。
 
-1. Log into VRChat.
+1. 登录VRChat。
 
-2. Open the Avatar Menu via your Main Menu.
+2. 通过主菜单打开模型菜单。
 
-3. Click the avatar that you generated an impostor for.
+3. 点击你创建了替身的模型。
 
-4. You should notice that the "Features" of the avatar now includes "Impostor". 
+4. 你应该注意到模型的"特性"栏现在包括了"模型替身"。 
 
 ![image](/creators.vrchat.com/images/avatars/impostors/features-row.png)
 
-You should also see a new button underneath the avatar model preview, which will allow you to switch between previewing the impostor and the normal avatar.
+你应该也能看到一个在模型预览下面的新按钮，允许你在模型替身和一般模型的预览中切换。
 
-**Note: Impostors that are previewed in this menu may exhibit some bugs not visible to other players.**
 
+
+::: info 笔记
+**在菜单里展示的模型替身可能会有一些其他玩家看不到的bug**
+:::
 ![image](/creators.vrchat.com/images/avatars/impostors/preview-avatar.png)
 ![image](/creators.vrchat.com/images/avatars/impostors/preview-impostor.png)
 
-## Customizing an Impostor
-Impostors come out pretty good by default, but complex avatars may benefit from some customization using the VRChat SDK.
+## 自定义模型替身
+模型替身的默认效果就很不错了, 但是复杂的模型可能会从使用VRChat SDK自定义中受益。
 
-To customize, simply add the VRCImpostorSettings Script to your avatar before uploading.
+在上传前将VRCImpostorSettings脚本加到你的模型上来自定义模型替身。
 
-## VRCImpostorSettings
+## VRCImpostorSettings(VRC模型替身设置)
 
-### Resolution Scale
-Changes the amount of space on the impostors texture atlas that is dedicated to this body part's texture. 
+### 分辨率缩放
+调整该身体部位在替身纹理图集中占用的空间比例。
 
-For instance, you can place this script on the head bone and change this value to make the head take up more or less of the texture atlas, increasing or decreasing the overall texture quality. Note that this may shrink other parts of the body on the atlas it if needs to. 
+例如：将此脚本放置在头部骨骼时，可通过调整该值控制头部在图集中的占比，从而提升或降低该部位的纹理质量。注意调整可能导致图集中其他身体部位的占比被压缩。
 
-_This is relative to the bone that VRCImpostorSettings is placed on._
+_该设置基于VRCImpostorSettings脚本所绑定的骨骼生效。_
 
-### Transforms To Ignore
-Ignores these transforms when capturing data for the impostor. This will hide them from the final result.
 
-_This is independent of the bone that VRCImpostorSettings is placed on._
 
-### Extra Child Transforms
-This is good for things like wings and tails, as it will tell the impostor generator to make a separate sprite for the bone this script is on.
+### 需忽略的变换
+在替身数据采集时忽略指定的变换节点。这些变换将在最终结果中被隐藏。
 
-We don't recommend using this on smaller things like individual fingers as all sprites share a single texture sheet. Doing so would cause quality to decrease elsewhere.
+_该设置独立于VRCImpostorSettings脚本所绑定的骨骼生效。_
 
-_This is independent of the bone that VRCImpostorSettings is placed on._
+### 额外子级变换
+适用于翅膀、尾巴等部位。启用后将为当前脚本所在的骨骼生成独立子画面。
 
-### Re-parent Here
-Re-parents another bone to this impostor sprite. This means that it will be impostorized with this body part, and be a part of that sprite.
+不建议对手指等细小部位使用此功能，因为所有子画面共享同一纹理图集。启用可能降低其他部位的纹理质量。
 
-For instance, if you'd like your wings to be a part of the upper body, you can re-parent the root wing bone to the chest bone during impostorization with this.
+_该设置独立于VRCImpostorSettings脚本所绑定的骨骼生效。_
 
-_This is relative to the bone that VRCImpostorSettings is placed on._
+### 重新设置父级
+将其他骨骼设置为当前替身子画面的子级。该骨骼将与当前身体部位共同进行替身化处理，成为子画面的一部分。
 
-## When is an impostor visible?
-Currently, there are only three ways to see an impostor:
+例如：若希望翅膀成为上半身的一部分，可使用此功能在替身化过程中将翅膀根部骨骼重新父级到胸部骨骼。
 
-- Avatar Preview
+_该设置基于VRCImpostorSettings脚本所绑定的骨骼生效。_
 
-- Performance Blocking (e.g. avatar is very poor but you have performance limit set to medium)
+## 什么时候会看到模型替身?
+目前, 只有三种情况会看到模型替身:
 
-- Platform Mistmatch (e.g. avatar is uploaded for PC, but you're on a Quest)
+- 模型预览界面
 
-**Note: Impostor auto-generation and support for non-humanoid avatars is coming in the future!**
+- 性能阻止 (例如，模型等级是"very poor"但是你将性能限制开到了"medium")
+
+- 平台不匹配 (例如，模型是PC模型, 但是你在玩Quest平台)
+
+
+::: info 信息
+**自动生成模型替身和对非人形模型的支持将在未来推送！**
+:::

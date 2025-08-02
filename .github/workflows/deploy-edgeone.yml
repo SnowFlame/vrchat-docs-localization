@@ -1,8 +1,6 @@
-name: Deploy
+name: Deploy to EdgeOne Pages
 on:
   push:
-    branches: main
-  pull_request:
     branches: main
 
 jobs:
@@ -39,11 +37,5 @@ jobs:
       - name: Build step
         run: "yarn run docs:build"
 
-      - run: "cp -r docs/.vitepress/dist hosting-server/public"
-
-      - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "vrchat-docs-localization"
-          entrypoint: "main.ts"
-          root: "hosting-server"
+      - name: Deploy to EdgeOne Pages
+        run: npx edgeone pages deploy docs/.vitepress/dist -n ${{ secrets.EDGEONE_PROJECT_NAME }} -t ${{ secrets.EDGEONE_API_TOKEN }}

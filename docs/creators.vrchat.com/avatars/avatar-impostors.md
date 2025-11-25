@@ -1,6 +1,6 @@
 ---
 title: "模型替身"
-upstreamCommit: eeb79828b79a3f4298f892c061142e2ab0871b3c
+upstreamCommit: 06696aba7cbc4ae598f1d28cc4aa584e28d5559c
 ---
 
 # 模型替身
@@ -15,7 +15,7 @@ upstreamCommit: eeb79828b79a3f4298f892c061142e2ab0871b3c
 
 创建你的第一个模型替身：
 
-1. 登录 vrchat 网页。
+1. 登录 VRChat 网页。
 
 2. 转到 “Avatars”，然后点击 “My Avatars”，然后点击你想要创建模型替身的虚拟形象的名称或图标。
 
@@ -94,7 +94,7 @@ _该设置基于 VRCImpostorSettings 脚本所绑定的骨骼生效。_
 
 - 虚拟形象预览界面
 
-- 性能阻止 (例如，虚拟形象等级是 “very poor” 但是你将性能限制开到了 “medium”)
+- 性能阻止 (例如，虚拟形象等级是 “极高负载” 但是你将性能限制开到了 “中负载”)
 
 - 平台不匹配 (例如，虚拟形象是 PC 平台上的，但是你在玩 Quest 平台)
 
